@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+   <title>Chess</title>
+</head>
+<body>
+   <div class="board" id="cm">
+   <script>      
+			var boardW = "600px";
+			var boardH = "600px";
+			var cellW = "60px";
+			var cellH = "60px";
+			var container = document.querySelector(".board");
+			container.style.background = "#734217";
+			container.style.width = boardW;
+			container.style.height = boardH;
+			container.style.paddingLeft = "0px";
+			container.style.paddingBottom = "0px";
+			container.style.margin = "0 auto";
+			container.style.display = "flex";
+			container.style.flexWrap = "wrap";
+
+         function Cell ()
+			{
+				var cell = document.createElement ("div");
+				cell.className="cell";
+				cm.append(cell);
+				cell.style.width = cellH;
+				cell.style.height = cellW;
+				cell.style.margin = "0px";
+				cell.style.padding = "0px";
+				cell.style.fontSize = "40px";
+				cell.style.fontWeight = "bold";
+				cell.style.textAlign = "center";
+            	cell.style.background = "#9e9994"				
+			}
+         
+         function BoardElement ()
+         {
+			 var boardH = Object.assign({}, globalThis.boardH);
+			 var boardW = Object.assign({}, globalThis.boardW);
+			 var cellW = Object.assign({}, globalThis.cellH);
+			 var cellH = Object.assign({}, globalThis.cellW);
+            boardH = this.boardH.replace(/[^0-9]/g, '');
+            boardW = this.boardW.replace(/[^0-9]/g, '');
+			cellW = this.cellW.replace(/[^0-9]/g, '');
+			cellH = this.cellH.replace(/[^0-9]/g, '');
+            var board = +(boardH/cellW * (boardW/cellH));  
+			return board; 
+         }
+         var board = BoardElement();
+
+         for (var n=0; (n!=board); n++) {
+				window.onload = Cell ();
+			};
+		
+		GameBorde();
+		function GameBorde()
+		{
+			var masCell = document.querySelectorAll (".cell");
+			var obj =[0,1,2,3,4,5,6,7,8,9,10,19,20,29,30,39,40,49,50,59,60,69,70,79,80,89,90,91,92,93,94,95,96,97,98,99,100];
+			var k = true;
+			var chek =0;
+			var chek1 =0;
+			for (var i=0; (i<masCell.length); i++) 
+			{
+				for(var s in obj)
+				{
+					if(i == +obj[s])
+				{
+					k = false;
+					break;
+				}
+				}			
+				if(k == true)
+				{
+					var c;
+					if(chek!=8)
+						{
+						if (i%2==1)	
+						{
+							c ="#ffe4cd";
+							chek++
+						} 
+					else 
+						{
+							c="#665a51";
+							chek++;
+						}
+						if(chek==8)
+						{
+							chek1=0;
+						}
+					}
+					else
+					{
+						if (i%2==1)	
+						{
+							c ="#665a51";
+							chek1++
+						} 
+						else 
+						{
+							c="#ffe4cd";
+							chek1++;
+						}
+						if(chek1==8)
+						{
+							chek=0;
+						}
+					}
+					masCell[i].style.background=c;
+					if ((i>20) && (i<29)) {
+						masCell[i].innerHTML = "<img src='Фигуры/ПешкаЧ.png ' >";
+					};
+					if ((i>70) && (i<79)) {
+						masCell[i].innerHTML = "<img src='Фигуры/ПешкаБ.png ' >";
+					};				
+				}
+				else
+				{				
+					k=true;
+				}	
+			}
+			masCell[11].innerHTML = "<img src='Фигуры/ЛадьяЧ.png ' >";
+			masCell[12].innerHTML = "<img src='Фигуры/КоньЧерный.png ' >";
+			masCell[13].innerHTML = "<img src='Фигуры/СлонЧ.png ' >";
+			masCell[14].innerHTML = "<img src='Фигуры/ФерзьЧ.png ' >";
+			masCell[15].innerHTML = "<img src='Фигуры/КорольЧ.png ' >";
+			masCell[16].innerHTML = "<img src='Фигуры/СлонЧ.png ' >";
+			masCell[17].innerHTML = "<img src='Фигуры/КоньЧерный.png ' >";
+			masCell[18].innerHTML = "<img src='Фигуры/ЛадьяЧ.png ' >";
+			masCell[81].innerHTML = "<img src='Фигуры/ЛадьяБ.png ' >";
+			masCell[82].innerHTML = "<img src='Фигуры/КоньБелый.png ' >";
+			masCell[83].innerHTML = "<img src='Фигуры/СлонБ.png ' >";
+			masCell[84].innerHTML = "<img src='Фигуры/ФерзьБ.png ' >";
+			masCell[85].innerHTML = "<img src='Фигуры/КорольБ.png ' >";
+			masCell[86].innerHTML = "<img src='Фигуры/СлонБ.png ' >";
+			masCell[87].innerHTML = "<img src='Фигуры/КоньБелый.png ' >";
+			masCell[88].innerHTML = "<img src='Фигуры/ЛадьяБ.png ' >";
+
+			masCell[1].innerText = "A";
+			masCell[2].innerText = "B";
+			masCell[3].innerText = "C";
+			masCell[4].innerText = "D";
+			masCell[5].innerText = "E";
+			masCell[6].innerText = "F";
+			masCell[7].innerText = "G";
+			masCell[8].innerText = "H";
+		
+			masCell[10].innerText = "1";
+			masCell[20].innerText = "2";
+			masCell[30].innerText = "3";
+			masCell[40].innerText = "4";
+			masCell[50].innerText = "5";
+			masCell[60].innerText = "6";
+			masCell[70].innerText = "7";
+			masCell[80].innerText = "8";	
+	}
+		
+
+         </script> 
+   </div>
+</body>
+</html>
+
